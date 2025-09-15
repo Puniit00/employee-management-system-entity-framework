@@ -1,0 +1,68 @@
+# ----- Backend (.NET) -----
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.vs/
+API/.vs/
+
+# ----- Angular -----
+dist/
+dist-ssr/
+node_modules/
+
+# Logs
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment files (if sensitive)
+UI/src/environments/environment*.ts
+
+# Ignore Visual Studio database files
+*.db
+
+# Ignore entire .vs folder (recommended)
+.vs/
+
+# Ignore Visual Studio specific folders
+.vs/
+.vscode/
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore database/cache files
+*.db
+*.db-shm
+*.db-wal
+*.dtbcache.v2
+*.v2
+*.futdcache.v2
+*.vsidx
+*.bak
+*.backup.json
+
+# Ignore Copilot indices
+CopilotIndices/
+
+# Ignore project evaluation metadata
+*.metadata.v9.bin
+*.projects.v9.bin
+*.strings.v9.bin
+
