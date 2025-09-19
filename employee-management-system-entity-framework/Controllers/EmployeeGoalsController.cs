@@ -24,7 +24,7 @@ namespace employee_management_system_entity_framework.Controllers
 
         [Route("AddEmployee")]
         [HttpPost]
-        public async Task<ActionResult<bool>> AddEmployee(Goals goal)
+        public async Task<ActionResult<bool>> AddEmployeeGoal(Goals goal)
         {
             int? employeeId = await context.Employees.Where(e=>e.Id == goal.EmployeeId).Select(e=>e.Id).FirstOrDefaultAsync();
 
@@ -35,6 +35,20 @@ namespace employee_management_system_entity_framework.Controllers
                 return Ok(true);
             }
 
+            return Ok(false);
+        }
+
+        [Route("DeleteEmployeeGoal")]
+        [HttpDelete]
+        public async Task<ActionResult<bool>> DeleteEmployeeGoalAsync(int goalId)
+        {
+            var goal = await context.Goals.Where(g => g.Id == goalId).Select(g => g).FirstOrDefaultAsync();
+            if(goal != null)
+            {
+                 context.Goals.Remove(goal);
+                await context.SaveChangesAsync();
+                return Ok(true);
+            }
             return Ok(false);
         }
     }
