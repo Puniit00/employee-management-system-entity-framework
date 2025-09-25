@@ -75,6 +75,7 @@ namespace employee_management_system_entity_framework.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
+            var transaction = await _context.Database.BeginTransactionAsync();
             Employees? employee = await _context.Employees.FindAsync(id);
             if (employee == null)
             {
@@ -82,6 +83,7 @@ namespace employee_management_system_entity_framework.Controllers
             }
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
             return NoContent();
         }
 
