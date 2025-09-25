@@ -1,6 +1,7 @@
 ﻿using EmployeeManagementSystemEntityFramework.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Text;
 
 namespace employee_management_system_entity_framework.Controllers
 {
@@ -82,6 +83,23 @@ namespace employee_management_system_entity_framework.Controllers
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
+
+        [Route("GetNumberofEmployeeRecordsPerGoal")]
+        [HttpGet]
+        public async Task<IActionResult> GetNumberofEmployeeRecordsPerGoalAsync()
+        {
+            var result = await (from g in _context.Goals
+                                .AsNoTracking()
+                               join e in _context.Employees.AsNoTracking() on g.EmployeeId equals e.Id
+                               group g by new { g.EmployeeId, e.Name } into grp
+                               select new
+                               {
+                                   grp.Key.EmployeeId,
+                                   EmployeeName = grp.Key.Name,
+                                   GoalCount = grp.Count()
+                               }).ToListAsync();
+            return Ok(result);
         }
     }
 }

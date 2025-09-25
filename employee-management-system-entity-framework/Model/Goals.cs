@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Model
+﻿using EmployeeManagementSystemEntityFramework.Model;
+
+namespace WebApplication1.Model
 {
     public class Goals
     {

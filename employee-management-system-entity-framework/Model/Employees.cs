@@ -1,3 +1,5 @@
+using WebApplication1.Model;
+
 namespace EmployeeManagementSystemEntityFramework.Model
 {
     public class Employees
